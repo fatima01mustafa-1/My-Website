@@ -1,0 +1,167 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  transition: all 0.5s ease;
+}
+
+.transparent {
+  background: transparent;
+}
+
+.scrolled {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.navContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .navContainer {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navContainer {
+    padding: 0 2rem;
+  }
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+}
+
+.logo {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.desktopNav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: block;
+  }
+}
+
+.navItems {
+  margin-left: 2.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 2rem;
+}
+
+.navItem {
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.navItem:hover {
+  color: white;
+}
+
+.navItem::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  transition: width 0.3s ease;
+}
+
+.navItem:hover::after {
+  width: 100%;
+}
+
+.mobileMenuButton {
+  display: block;
+  padding: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .mobileMenuButton {
+    display: none;
+  }
+}
+
+.mobileMenuButton:hover {
+  color: white;
+}
+
+.mobileNav {
+  display: block;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .mobileNav {
+    display: none;
+  }
+}
+
+.mobileNavContent {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.mobileNavItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobileNavItem {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.125rem;
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+  transition: all 0.3s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 0.75rem;
+}
+
+.mobileNavItem:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+}

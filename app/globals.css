@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 63%;
+    --accent: 0 0% 9%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 262 83% 58%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #7c3aed, #db2777);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: white;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Glassmorphism utility classes */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient background */
+.animated-gradient {
+  background: linear-gradient(-45deg, #0a0a0a, #1a1a2e, #16213e, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
