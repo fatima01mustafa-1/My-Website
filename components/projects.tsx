@@ -43,18 +43,6 @@ const projects = [
     githubUrl: 'https://github.com/fatimamustafa/veteranmeet',
     featured: true,
     gradient: 'from-yellow-500 to-orange-600'
-  },
-  {
-    id: 4,
-    title: 'AI-Powered Chat Assistant',
-    description: 'Built a conversational chatbot using FastAPI, React, and OpenAI API for customer support automation. Features NLP-based responses, multi-language support, and intelligent conversation flow management.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
-    technologies: ['FastAPI', 'React', 'OpenAI API', 'Python', 'AI/ML', 'NLP'],
-    category: 'AI/ML',
-    liveUrl: null,
-    githubUrl: 'https://github.com/fatimamustafa/ai-chat-assistant',
-    featured: true,
-    gradient: 'from-pink-500 to-red-600'
   }
 ]
 
