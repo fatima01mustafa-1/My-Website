@@ -137,15 +137,15 @@ export function Footer () {
                 <p className="text-white/70">
                   <span className="text-white font-medium">Phone:</span><br />
                   <a 
-                    href="tel:+15551234567" 
+                    href="tel:+92 308 5733307" 
                     className="hover:text-purple-400 transition-colors duration-300"
                   >
-                    +1 (555) 123-4567
+                    +92 308 5733307
                   </a>
                 </p>
                 <p className="text-white/70">
                   <span className="text-white font-medium">Location:</span><br />
-                  San Francisco, CA
+                  Islamabad, Pakistan
                 </p>
               </div>
             </motion.div>
