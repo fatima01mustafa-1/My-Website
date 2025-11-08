@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   keywords: ['Full Stack Developer', 'React', 'Node.js', 'Next.js', 'JavaScript', 'TypeScript', 'Web Development'],
   authors: [{ name: 'Fatima Mustafa' }],
   creator: 'Fatima Mustafa',
+  icons: {
+    icon: '/images/favicon.ico',
+    shortcut: '/images/favicon.ico',
+    apple: '/images/favicon.ico',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
