@@ -65,14 +65,14 @@ const skillsCategories = [
 export function Skills () {
   return (
     <SectionWrapper>
-      <section id="skills" className="relative py-16 z-10 w-full">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="skills" className="relative py-8 md:py-12 lg:py-16 z-10 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8 lg:mb-12 text-center"
           >
             Key{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5eead4] to-[#2a8a7a]">

@@ -46,14 +46,14 @@ const projects = [
 export function Projects () {
   return (
     <SectionWrapper>
-      <section id="projects" className="relative py-16 z-10">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="projects" className="relative py-8 md:py-12 lg:py-16 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.h2
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8 lg:mb-12 text-center"
           >
             My{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2a8a7a] to-[#1a5a5a]">
@@ -61,7 +61,7 @@ export function Projects () {
             </span>
           </motion.h2>
 
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -109,17 +109,17 @@ export function Projects () {
 
                   {/* Content Section */}
                   <motion.div 
-                    className="lg:w-1/2 p-8 flex flex-col justify-between"
+                    className="lg:w-1/2 p-5 sm:p-6 md:p-8 flex flex-col justify-between"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.2 + 0.4 }}
                   >
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-[#2a8a7a] transition-colors">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4 group-hover:text-[#2a8a7a] transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-[#E5E5E5]/80 mb-6 leading-relaxed">
+                      <p className="text-sm sm:text-base text-[#E5E5E5]/80 mb-4 md:mb-6 leading-relaxed">
                         {project.description}
                       </p>
                       
@@ -141,22 +141,21 @@ export function Projects () {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex items-center gap-4">
-                      {project.liveUrl && (
-                        <motion.a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ x: 5, scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] text-white hover:shadow-[0_0_20px_rgba(94,234,212,0.6)] font-medium transition-all group/link"
-                        >
-                          <ExternalLink size={18} />
-                          <span>Visit Website</span>
-                          <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
-                        </motion.a>
-                      )}
+                    {/* Action Button */}
+                    {project.liveUrl ? (
+                      <motion.a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ x: 5, scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] text-white hover:shadow-[0_0_20px_rgba(94,234,212,0.6)] font-medium transition-all group/link"
+                      >
+                        <ExternalLink size={18} />
+                        <span>Visit Website</span>
+                        <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
+                      </motion.a>
+                    ) : (
                       <motion.a
                         href={project.githubUrl}
                         target="_blank"
@@ -169,7 +168,7 @@ export function Projects () {
                         <span>View on GitHub</span>
                         <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
                       </motion.a>
-                    </div>
+                    )}
                   </motion.div>
                 </div>
               </motion.div>

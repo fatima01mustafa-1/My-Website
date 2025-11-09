@@ -32,7 +32,7 @@ export default function SectionWrapper({ children }: { children: React.ReactNode
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className="my-16"
+      className="my-8 md:my-12 lg:my-16"
     >
       {children}
     </motion.section>

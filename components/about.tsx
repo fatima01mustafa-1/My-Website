@@ -67,14 +67,14 @@ const statVariants = {
 export function About () {
   return (
     <SectionWrapper>
-      <section id="about" className="relative py-16 z-10">
-        <div className="max-w-5xl mx-auto px-6">
+      <section id="about" className="relative py-8 md:py-12 lg:py-16 z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.h2
             variants={itemVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-white mb-8"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6 lg:mb-8"
           >
             About
           </motion.h2>
@@ -84,12 +84,12 @@ export function About () {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="glass rounded-2xl p-8 md:p-12 mb-12"
+            className="glass rounded-2xl p-6 md:p-8 lg:p-12 mb-6 md:mb-8 lg:mb-12"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">
               Hello
             </h3>
-            <p className="text-lg text-[#E5E5E5]/90 leading-relaxed">
+            <p className="text-base sm:text-lg text-[#E5E5E5]/90 leading-relaxed">
               Passionate Full Stack Developer with 1+ years of professional experience building and deploying scalable web applications. 
               Skilled in <span className="text-[#5eead4] font-semibold drop-shadow-[0_0_10px_rgba(94,234,212,0.5)]">Next.js, NestJS, AWS, PostgreSQL, and MongoDB</span>, with hands-on expertise in 
               <span className="text-[#5eead4] font-semibold drop-shadow-[0_0_10px_rgba(94,234,212,0.5)]"> CI/CD pipelines</span> and <span className="text-[#5eead4] font-semibold drop-shadow-[0_0_10px_rgba(94,234,212,0.5)]">cloud-based architectures</span>. 
@@ -103,7 +103,7 @@ export function About () {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 md:mb-8 lg:mb-12"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -116,14 +116,14 @@ export function About () {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 className="text-center group"
               >
-                <div className="glass rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(94,234,212,0.6)]">
-                    <stat.icon className="w-6 h-6 text-white drop-shadow-[0_0_8px_rgba(94,234,212,0.8)]" />
+                <div className="glass rounded-2xl p-4 sm:p-5 md:p-6 hover:bg-white/10 transition-all duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 rounded-xl bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(94,234,212,0.6)]">
+                    <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white drop-shadow-[0_0_8px_rgba(94,234,212,0.8)]" />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                  <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
                     {stat.number}
                   </div>
-                  <div className="text-[#E5E5E5]/70 font-medium text-sm">
+                  <div className="text-[#E5E5E5]/70 font-medium text-xs sm:text-sm">
                     {stat.label}
                   </div>
                 </div>
@@ -137,13 +137,13 @@ export function About () {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="mb-12"
+            className="mb-6 md:mb-8 lg:mb-12"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
-              <Briefcase className="text-[#5eead4] drop-shadow-[0_0_15px_rgba(94,234,212,0.8)]" size={32} />
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 lg:mb-8 flex items-center gap-2 sm:gap-3">
+              <Briefcase className="text-[#5eead4] drop-shadow-[0_0_15px_rgba(94,234,212,0.8)] w-6 h-6 sm:w-8 sm:h-8" />
               Experience
             </h3>
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               {experience.map((job, index) => (
                 <motion.div
                   key={job.title}

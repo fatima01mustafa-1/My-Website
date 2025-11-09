@@ -107,19 +107,19 @@ export function Contact () {
           top: 80,
         }}
       />
-      <section id="contact" className="relative py-16 z-10">
-        <div className="max-w-5xl mx-auto px-6">
+      <section id="contact" className="relative py-8 md:py-12 lg:py-16 z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-white mb-12"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8 lg:mb-12"
           >
             Contact
           </motion.h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -60, scale: 0.95 }}
@@ -129,12 +129,12 @@ export function Contact () {
                 ease: [0.25, 0.1, 0.25, 1]
               }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-4 md:space-y-6"
             >
-              <div className="glass rounded-xl p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] flex items-center justify-center shadow-[0_0_20px_rgba(94,234,212,0.5)]">
-                    <Mail className="w-6 h-6 text-white" />
+              <div className="glass rounded-xl p-4 sm:p-5 md:p-6">
+                <div className="flex items-center gap-3 sm:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] flex items-center justify-center shadow-[0_0_20px_rgba(94,234,212,0.5)]">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
                     <p className="text-sm text-[#E5E5E5]/60">Email</p>
@@ -145,10 +145,10 @@ export function Contact () {
                 </div>
               </div>
 
-              <div className="glass rounded-xl p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] flex items-center justify-center shadow-[0_0_20px_rgba(94,234,212,0.5)]">
-                    <Phone className="w-6 h-6 text-white" />
+              <div className="glass rounded-xl p-4 sm:p-5 md:p-6">
+                <div className="flex items-center gap-3 sm:gap-4 mb-3 md:mb-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] flex items-center justify-center shadow-[0_0_20px_rgba(94,234,212,0.5)]">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
                     <p className="text-sm text-[#E5E5E5]/60">Phone</p>
@@ -159,10 +159,10 @@ export function Contact () {
                 </div>
               </div>
 
-              <div className="glass rounded-xl p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] flex items-center justify-center shadow-[0_0_20px_rgba(94,234,212,0.5)]">
-                    <MapPin className="w-6 h-6 text-white" />
+              <div className="glass rounded-xl p-4 sm:p-5 md:p-6">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] flex items-center justify-center shadow-[0_0_20px_rgba(94,234,212,0.5)]">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
                     <p className="text-sm text-[#E5E5E5]/60">Location</p>
@@ -183,8 +183,8 @@ export function Contact () {
               }}
               viewport={{ once: true }}
             >
-              <div className="glass rounded-xl p-6 bg-black/10 backdrop-blur-sm">
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div className="glass rounded-xl p-5 sm:p-6 bg-black/10 backdrop-blur-sm">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-[#E5E5E5]/80 mb-2">
                       Name *
