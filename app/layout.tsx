@@ -1,12 +1,19 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import { ErrorBoundary } from '@/components/error-boundary'
+import LayoutWrapper from '@/components/LayoutWrapper'
 import './globals.css'
 
 const inter = Inter({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter'
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-grotesk'
 })
 
 export const metadata: Metadata = {
@@ -53,9 +60,11 @@ export default function RootLayout ({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
         <ErrorBoundary>
-          {children}
+          <LayoutWrapper>
+            {children}
+          </LayoutWrapper>
         </ErrorBoundary>
       </body>
     </html>

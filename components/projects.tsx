@@ -1,10 +1,9 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Star, Eye } from 'lucide-react'
+import { Github, ExternalLink, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import styles from './projects.module.css'
+import SectionWrapper from './SectionWrapper'
 import Image from 'next/image'
 
 const projects = [
@@ -12,233 +11,193 @@ const projects = [
     id: 1,
     title: 'MyPropertyOrganiser',
     description: 'A comprehensive property management platform enabling landlords and tenants to manage listings, payments, and maintenance requests. Built with Next.js 15 (App Router) and NestJS, featuring real-time data integration with Plaid, Stripe, and PropertyData APIs.',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop&q=80',
     technologies: ['Next.js 15', 'NestJS', 'AWS', 'Plaid API', 'Stripe', 'PropertyData API'],
     category: 'Full Stack',
-    liveUrl: null,
+    liveUrl: 'https://hub.mypropertyorganiser.com/',
     githubUrl: 'https://github.com/fatimamustafa/mypropertyorganiser',
-    featured: true,
-    gradient: 'from-blue-500 to-purple-600'
+    featured: true
   },
   {
     id: 2,
     title: 'HonestDog',
     description: 'Redesigned and optimized pet adoption and e-commerce platform end-to-end, improving UX and reliability. Automated CI/CD workflows, managed deployments across AWS and Heroku, and integrated communication frameworks for breeder–adopter interactions.',
-    image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800&h=600&fit=crop&q=80',
     technologies: ['Next.js', 'PostgreSQL', 'AWS', 'Heroku', 'CI/CD', 'GitHub Actions'],
     category: 'Full Stack',
-    liveUrl: null,
+    liveUrl: 'https://www.honestdog.de/en',
     githubUrl: 'https://github.com/fatimamustafa/honestdog',
-    featured: true,
-    gradient: 'from-green-500 to-blue-600'
+    featured: true
   },
   {
     id: 3,
     title: 'VeteranMeet',
     description: 'Built a MERN-stack social networking app with JWT authentication for veterans, enabling user registration, secure login, and interactive posting. Features include user profiles, community forums, and veteran-specific resources.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&q=80',
     technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'JWT', 'MERN Stack'],
     category: 'Full Stack',
     liveUrl: null,
     githubUrl: 'https://github.com/fatimamustafa/veteranmeet',
-    featured: true,
-    gradient: 'from-yellow-500 to-orange-600'
+    featured: true
   }
 ]
 
-const categories = ['All', 'Full Stack', 'AI/ML']
 
 export function Projects () {
-  const [selectedCategory, setSelectedCategory] = useState('All')
-
-  const filteredProjects = selectedCategory === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory)
-
   return (
-    <section id="projects" className={cn('py-20 relative overflow-hidden', styles.projects)}>
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+    <SectionWrapper>
+      <section id="projects" className="relative py-16 z-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
-            className="text-lg text-white/60 font-medium mb-4 block"
+            className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
           >
-            Portfolio
-          </motion.span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Featured{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+            My{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2a8a7a] to-[#1a5a5a]">
               Projects
             </span>
-          </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Here are some of my recent projects that showcase my skills and experience 
-            in full-stack development, mobile apps, and modern web technologies.
-          </p>
-        </motion.div>
+          </motion.h2>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-16"
-        >
-          {categories.map((category) => (
-            <motion.button
-              key={category}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setSelectedCategory(category)}
-              className={cn(
-                'px-6 py-3 rounded-full font-semibold transition-all duration-300',
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/25'
-                  : 'glass text-white/80 hover:text-white hover:bg-white/10'
-              )}
-            >
-              {category}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className="group"
-            >
-              <div className="glass rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 h-full">
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  
-                  {project.featured && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
+          <div className="space-y-8">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 80, x: index % 2 === 0 ? -80 : 80, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.2,
+                  ease: [0.25, 0.1, 0.25, 1]
+                }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
+              >
+                <div className={cn(
+                  "glass rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300",
+                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse",
+                  "flex flex-col lg:flex-row gap-0"
+                )}>
+                  {/* Image Section */}
+                  <motion.div 
+                    className="relative lg:w-1/2 h-64 lg:h-auto overflow-hidden"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <motion.div 
+                      className="absolute top-4 left-4"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      className="absolute top-4 left-4 flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium"
+                      transition={{ delay: index * 0.2 + 0.3 }}
                     >
-                      <Star size={16} />
-                      Featured
-                    </motion.div>
-                  )}
-                  
-                  <div className="absolute top-4 right-4">
-                    <span className={cn(
-                      'px-3 py-1 rounded-full text-sm font-medium text-white',
-                      `bg-gradient-to-r ${project.gradient}`
-                    )}>
-                      {project.category}
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-white mb-2">
-                      {project.title}
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <p className="text-white/70 mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-white/5 text-white/80 text-xs rounded-full border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300"
-                      >
-                        {tech}
+                      <span className="px-3 py-1 rounded-full bg-[#2a8a7a]/20 backdrop-blur-sm border border-[#2a8a7a]/40 text-[#2a8a7a] text-sm font-medium">
+                        {project.category}
                       </span>
-                    ))}
-                  </div>
+                    </motion.div>
+                  </motion.div>
 
-                  <div className="flex gap-4">
-                    {project.liveUrl && (
+                  {/* Content Section */}
+                  <motion.div 
+                    className="lg:w-1/2 p-8 flex flex-col justify-between"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 + 0.4 }}
+                  >
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-[#2a8a7a] transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-[#E5E5E5]/80 mb-6 leading-relaxed">
+                        {project.description}
+                      </p>
+                      
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.technologies.map((tech, techIndex) => (
+                          <motion.span
+                            key={tech}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.2 + 0.5 + techIndex * 0.05 }}
+                            whileHover={{ scale: 1.1, y: -2 }}
+                            className="px-3 py-1.5 bg-white/5 text-[#E5E5E5]/70 text-xs rounded-lg border border-white/10 hover:border-[#2a8a7a]/30 hover:bg-white/10 transition-all duration-300"
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex items-center gap-4">
+                      {project.liveUrl && (
+                        <motion.a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ x: 5, scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] text-white hover:shadow-[0_0_20px_rgba(94,234,212,0.6)] font-medium transition-all group/link"
+                        >
+                          <ExternalLink size={18} />
+                          <span>Visit Website</span>
+                          <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
+                        </motion.a>
+                      )}
                       <motion.a
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        href={project.liveUrl}
+                        href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+                        whileHover={{ x: 5, scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-2 text-[#5eead4] hover:text-[#2a8a7a] font-medium transition-colors group/link"
                       >
-                        <Eye size={16} />
-                        Live Demo
+                        <Github size={20} />
+                        <span>View on GitHub</span>
+                        <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
                       </motion.a>
-                    )}
-                    <motion.a
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 glass text-white/80 hover:text-white hover:bg-white/10 rounded-lg font-medium transition-all duration-300"
-                    >
-                      <Github size={16} />
-                      Code
-                    </motion.a>
-                  </div>
+                    </div>
+                  </motion.div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
 
-        {/* View More Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="https://github.com/fatimamustafa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300"
+          {/* View More Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
           >
-            <Github size={24} />
-            View More on GitHub
-          </motion.a>
-        </motion.div>
-      </div>
-    </section>
+            <motion.a
+              href="https://github.com/fatimamustafa"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-[#2a8a7a] text-[#2a8a7a] bg-black/10 backdrop-blur-sm hover:bg-[#2a8a7a]/10 transition-all duration-300 font-semibold"
+            >
+              <Github size={24} />
+              View More on GitHub
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
+    </SectionWrapper>
   )
 }

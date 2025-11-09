@@ -1,58 +1,33 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Database, Globe, Smartphone, Zap, Award, Users, Clock } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import styles from './about.module.css'
-
-const skills = [
-  {
-    category: 'Frontend',
-    icon: Globe,
-    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
-    color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    category: 'Backend',
-    icon: Database,
-    technologies: ['NestJS', 'Node.js', 'Express.js', 'PostgreSQL', 'MongoDB'],
-    color: 'from-green-500 to-emerald-500'
-  },
-  {
-    category: 'AI & Data',
-    icon: Smartphone,
-    technologies: ['Python', 'ResNet', 'Data Science', 'AI/ML Integration'],
-    color: 'from-purple-500 to-pink-500'
-  },
-  {
-    category: 'Cloud & DevOps',
-    icon: Code,
-    technologies: ['AWS', 'Docker', 'Heroku', 'GitHub Actions', 'CI/CD'],
-    color: 'from-orange-500 to-red-500'
-  }
-]
+import SectionWrapper from './SectionWrapper'
+import { Zap, Award, Users, Clock, Briefcase } from 'lucide-react'
 
 const experience = [
   {
     title: 'Full Stack Developer',
     company: 'Code Huddle',
     period: 'July 2024 – Present',
-    description: 'Architected and maintained full-stack applications with Next.js (App Router) and NestJS, serving ~25k users and driving 24% organic traffic growth. Managed AWS infrastructure and built CI/CD pipelines using GitHub Actions.',
-    achievements: ['24% organic traffic growth', '38% infrastructure cost reduction', 'Served ~25k users']
+    description: 'Architected and maintained full-stack applications with Next.js 15 (App Router) and NestJS, serving ~25k users and driving 24% organic traffic growth. Managed AWS infrastructure and built CI/CD pipelines using GitHub Actions.',
+    achievements: ['24% organic traffic growth', '38% infrastructure cost reduction', 'Served ~25k users', 'Built scalable microservices'],
+    technologies: ['Next.js 15', 'NestJS', 'AWS', 'PostgreSQL', 'CI/CD', 'GitHub Actions']
   },
   {
     title: 'Software Development Intern',
     company: 'SolutionsHut',
-    period: '08/2022 - 09/2022',
+    period: 'August 2022 – September 2022',
     description: 'Contributed to MERN-stack microservices: developed UI components and backend API endpoints, participated in Agile sprints, and helped refine deployment workflows.',
-    achievements: ['MERN-stack development', 'Agile methodology', 'API development']
+    achievements: ['MERN-stack development', 'Agile methodology', 'API development', 'UI/UX improvements'],
+    technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'REST APIs']
   },
   {
     title: 'Teaching Assistant / Lab Demonstrator',
     company: 'FAST NUCES',
-    period: '08/2022 - 01/2024',
+    period: 'August 2022 – January 2024',
     description: 'Mentored 50+ students in Discrete Structures, Programming and Operating Systems labs; developed instructional materials, ran lab sessions, and clarified complex technical concepts.',
-    achievements: ['Mentored 50+ students', 'Lab demonstrations', 'Instructional materials']
+    achievements: ['Mentored 50+ students', 'Lab demonstrations', 'Instructional materials', 'Technical support'],
+    technologies: ['C++', 'Python', 'Data Structures', 'Algorithms']
   }
 ]
 
@@ -63,182 +38,169 @@ const stats = [
   { number: '24%', label: 'Organic Traffic Growth', icon: Zap }
 ]
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 50, x: -30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+};
+
+const statVariants = {
+  hidden: { opacity: 0, scale: 0.8, rotate: -10 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    rotate: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
 export function About () {
   return (
-    <section id="about" className={cn('py-20 relative overflow-hidden', styles.about)}>
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+    <SectionWrapper>
+      <section id="about" className="relative py-16 z-10">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.h2
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="text-lg text-white/60 font-medium mb-4 block"
+            className="text-3xl md:text-4xl font-bold text-white mb-8"
           >
-            About Me
-          </motion.span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Crafting Digital{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-              Experiences
-            </span>
-          </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            I'm a dedicated Full Stack Developer driven by curiosity and a passion for clean, maintainable code. 
-            My journey spans frontend and backend development, cloud deployment, and automation pipelines. 
-            I enjoy solving complex problems, experimenting with emerging technologies, and building impactful products.
-          </p>
-        </motion.div>
+            About
+          </motion.h2>
 
-        {/* Skills Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h3 className="text-3xl font-bold text-white mb-12 text-center">
-            Skills & Technologies
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {skills.map((skill, index) => (
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="glass rounded-2xl p-8 md:p-12 mb-12"
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+              Hello
+            </h3>
+            <p className="text-lg text-[#E5E5E5]/90 leading-relaxed">
+              Passionate Full Stack Developer with 1+ years of professional experience building and deploying scalable web applications. 
+              Skilled in <span className="text-[#5eead4] font-semibold drop-shadow-[0_0_10px_rgba(94,234,212,0.5)]">Next.js, NestJS, AWS, PostgreSQL, and MongoDB</span>, with hands-on expertise in 
+              <span className="text-[#5eead4] font-semibold drop-shadow-[0_0_10px_rgba(94,234,212,0.5)]"> CI/CD pipelines</span> and <span className="text-[#5eead4] font-semibold drop-shadow-[0_0_10px_rgba(94,234,212,0.5)]">cloud-based architectures</span>. 
+              Adept at transforming business requirements into efficient, reliable, and user-friendly digital solutions.
+            </p>
+          </motion.div>
+
+          {/* Stats Section */}
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
+          >
+            {stats.map((stat, index) => (
               <motion.div
-                key={skill.category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                key={stat.label}
+                variants={statVariants}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="group"
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="text-center group"
               >
-                <div className="glass rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300">
-                  <div className="flex items-center mb-6">
-                    <div className={cn(
-                      'w-16 h-16 rounded-2xl bg-gradient-to-r flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300',
-                      skill.color
-                    )}>
-                      <skill.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="text-xl font-bold text-white">
-                      {skill.category}
-                    </h4>
+                <div className="glass rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(94,234,212,0.6)]">
+                    <stat.icon className="w-6 h-6 text-white drop-shadow-[0_0_8px_rgba(94,234,212,0.8)]" />
                   </div>
-                  <div className="space-y-3">
-                    {skill.technologies.map((tech) => (
+                  <div className="text-3xl font-bold text-white mb-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    {stat.number}
+                  </div>
+                  <div className="text-[#E5E5E5]/70 font-medium text-sm">
+                    {stat.label}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Experience Section */}
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
+              <Briefcase className="text-[#5eead4] drop-shadow-[0_0_15px_rgba(94,234,212,0.8)]" size={32} />
+              Experience
+            </h3>
+            <div className="space-y-6">
+              {experience.map((job, index) => (
+                <motion.div
+                  key={job.title}
+                  variants={itemVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  whileHover={{ x: 10, scale: 1.02 }}
+                  transition={{ delay: index * 0.15 }}
+                  className="glass rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                    <div>
+                      <h4 className="text-xl font-bold text-white mb-2">
+                        {job.title}
+                      </h4>
+                      <p className="text-transparent bg-clip-text bg-gradient-to-r from-[#5eead4] to-[#2a8a7a] font-semibold text-lg drop-shadow-[0_0_10px_rgba(94,234,212,0.5)]">
+                        {job.company}
+                      </p>
+                    </div>
+                    <span className="text-[#E5E5E5]/60 font-medium mt-2 lg:mt-0">
+                      {job.period}
+                    </span>
+                  </div>
+                  <p className="text-[#E5E5E5]/70 mb-4 leading-relaxed">
+                    {job.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {job.achievements.map((achievement) => (
                       <motion.span
-                        key={tech}
-                        whileHover={{ scale: 1.05 }}
-                        className="inline-block px-4 py-2 bg-white/5 text-white/80 text-sm rounded-full border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 mr-2 mb-2"
+                        key={achievement}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.1 }}
+                        className="px-3 py-1 bg-gradient-to-r from-[#5eead4]/20 to-[#2a8a7a]/20 text-[#5eead4] text-sm rounded-full border border-[#5eead4]/40 drop-shadow-[0_0_8px_rgba(94,234,212,0.4)]"
                       >
-                        {tech}
+                        {achievement}
                       </motion.span>
                     ))}
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Experience Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h3 className="text-3xl font-bold text-white mb-12 text-center">
-            Professional Experience
-          </h3>
-          <div className="space-y-8">
-            {experience.map((job, index) => (
-              <motion.div
-                key={job.title}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ x: 10 }}
-                className="glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
-                  <div>
-                    <h4 className="text-2xl font-bold text-white mb-2">
-                      {job.title}
-                    </h4>
-                    <p className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-semibold text-lg">
-                      {job.company}
-                    </p>
+                  <div className="flex flex-wrap gap-2">
+                    {job.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-white/5 text-[#E5E5E5]/80 text-xs rounded-full border border-white/10"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                  <span className="text-white/60 font-medium mt-2 lg:mt-0">
-                    {job.period}
-                  </span>
-                </div>
-                <p className="text-white/70 mb-6 leading-relaxed">
-                  {job.description}
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  {job.achievements.map((achievement) => (
-                    <span
-                      key={achievement}
-                      className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-white/80 text-sm rounded-full border border-purple-500/30"
-                    >
-                      {achievement}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="text-center group"
-            >
-              <div className="glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-4xl font-bold text-white mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-white/60 font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </SectionWrapper>
   )
 }
